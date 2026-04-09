@@ -156,7 +156,7 @@
 
         /* ── Engines ── */
         .engines-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
         }
         .engine-card {
             background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
@@ -281,6 +281,11 @@
         .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 12px; }
         .footer-links a { font-size: 0.85rem; color: var(--text-dim); }
 
+        /* ── Product/Preview Grids ── */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+
         /* ── Responsive: Tablet ── */
         @media (max-width: 768px) {
             section { padding: 60px 0; }
@@ -291,7 +296,7 @@
             .hero-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
             .hero-stats { flex-wrap: wrap; gap: 24px; }
             .hero-stat { min-width: 120px; }
-            .engines-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .engines-grid, .pricing-grid, .products-grid, .preview-grid { grid-template-columns: 1fr; }
             .problem-grid { grid-template-columns: 1fr; }
             .roles-grid { grid-template-columns: repeat(2, 1fr); }
             .steps-grid { grid-template-columns: 1fr; }
@@ -386,7 +391,7 @@
             <h2>Three Products. One Mission.</h2>
             <p>Replace manual enterprise operations with autonomous AI systems that manage themselves.</p>
         </div>
-        <div class="engines-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="engines-grid" class="products-grid">
 
             <!-- BPO Commander -->
             <div class="engine-card" style="border-top: 3px solid #ef4444;">
@@ -857,12 +862,12 @@
             <h2>Try the Live Systems</h2>
             <p>All three products are running. Click to explore.</p>
         </div>
-        <div class="engines-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="engines-grid" class="preview-grid">
             <a href="https://bpo-commander.onrender.com" target="_blank" style="text-decoration: none;">
                 <div class="engine-card" style="text-align: center; cursor: pointer;">
                     <div style="font-size: 2.5rem; margin-bottom: 12px;">&#128222;</div>
                     <h3>BPO Commander</h3>
-                    <p style="font-size: 0.85rem;">Live dashboard with AI agents, real-time analytics, and autonomous operations. Login: admin / admin123</p>
+                    <p style="font-size: 0.85rem;">Live dashboard with AI agents, real-time analytics, and autonomous operations.</p>
                     <div style="margin-top: 16px; color: var(--primary-light); font-weight: 600; font-size: 0.9rem;">Open Live System &#8594;</div>
                 </div>
             </a>
