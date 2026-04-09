@@ -59,6 +59,15 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+        /* ── Animations ── */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.15); } 50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.3); } }
+        .fade-in { animation: fadeInUp 0.6s ease both; }
+        .fade-in-d1 { animation: fadeInUp 0.6s ease 0.1s both; }
+        .fade-in-d2 { animation: fadeInUp 0.6s ease 0.2s both; }
+        .fade-in-d3 { animation: fadeInUp 0.6s ease 0.3s both; }
+        .glow-border { animation: glow 3s ease-in-out infinite; }
+
         /* ── Buttons ── */
         .btn {
             display: inline-flex; align-items: center; gap: 8px;
@@ -297,8 +306,9 @@
         /* ── Responsive: Tablet ── */
         @media (max-width: 768px) {
             section { padding: 60px 0; }
-            .hero { padding: 120px 0 60px; }
+            .hero { padding: 100px 0 50px; }
             .hero h1 { font-size: 1.8rem; }
+            .role-card p { font-size: 0.85rem; }
             .hero p { font-size: 1rem; padding: 0 8px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .hero-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
@@ -317,7 +327,7 @@
         /* ── Responsive: Phone ── */
         @media (max-width: 480px) {
             .container { padding: 0 16px; }
-            .hero { padding: 100px 0 48px; }
+            .hero { padding: 80px 0 40px; }
             .hero h1 { font-size: 1.5rem; }
             .hero-badge { font-size: 0.7rem; padding: 4px 12px; }
             .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
@@ -375,14 +385,14 @@
 <!-- Hero -->
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">
+        <div class="hero-badge fade-in">
             <span class="dot"></span>
             Sylvaris Solutions LLC
         </div>
-        <h1>Autonomous AI Systems<br>for <span>Enterprise Operations</span></h1>
-        <p>Three products replacing manual operations with self-governing intelligence. Call centers, real estate, healthcare - deployed in 24 hours, running 24/7 without supervision.</p>
-        <div class="hero-buttons">
-            <a href="#products" class="btn btn-primary">See Our Products</a>
+        <h1 class="fade-in-d1">Autonomous AI Systems<br>for <span>Enterprise Operations</span></h1>
+        <p class="fade-in-d2">Three products replacing manual operations with self-governing intelligence. Call centers, real estate, healthcare. Deployed in 24 hours, running 24/7 without supervision.</p>
+        <div class="hero-buttons fade-in-d3">
+            <a href="#products" class="btn btn-primary glow-border">See Our Products</a>
             <a href="#demo" class="btn btn-secondary">Request a Demo</a>
         </div>
         <div class="hero-stats">
