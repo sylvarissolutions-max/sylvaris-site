@@ -104,8 +104,16 @@
         .nav-links a:hover { color: var(--text-bright); }
         .nav-cta { padding: 8px 20px; font-size: 0.85rem; }
 
+        .hamburger { display: none; width: 40px; height: 40px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border); align-items: center; justify-content: center; cursor: pointer; color: var(--text); }
+        .mobile-menu { display: none; position: fixed; inset: 0; z-index: 99; background: rgba(10,10,20,0.95); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 1.2rem; color: var(--text-bright); font-weight: 600; }
+        .mobile-menu .btn { margin-top: 8px; }
+        .mobile-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text); }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .hamburger { display: flex; }
         }
 
         /* ── Hero ── */
@@ -347,8 +355,22 @@
             <a href="#pricing">Pricing</a>
             <a href="#demo" class="btn btn-primary nav-cta">Request Demo</a>
         </div>
+        <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
     </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+    <div class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </div>
+    <a href="#products" onclick="document.getElementById('mobileMenu').classList.remove('open')">Products</a>
+    <a href="#engines" onclick="document.getElementById('mobileMenu').classList.remove('open')">BPO Details</a>
+    <a href="#pricing" onclick="document.getElementById('mobileMenu').classList.remove('open')">Pricing</a>
+    <a href="#demo" class="btn btn-primary" onclick="document.getElementById('mobileMenu').classList.remove('open')">Request Demo</a>
+</div>
 
 <!-- Hero -->
 <section class="hero">
