@@ -1,0 +1,179 @@
+/* Sylvaris Solutions - design tokens
+ * Single source of truth. Unified accent #6366f1 across the site.
+ */
+
+:root {
+    /* Surface palette */
+    --bg: #060610;
+    --bg-elev: #0b0b18;
+    --surface: #0f0f1c;
+    --surface-2: #16162a;
+    --border: #22223a;
+    --border-strong: #30304a;
+
+    /* Text palette */
+    --text: #ececf4;
+    --text-dim: #8c8ca3;
+    --text-mute: #585868;
+
+    /* Accent palette (unified on #6366f1) */
+    --accent: #6366f1;
+    --accent-bright: #818cf8;
+    --accent-dim: #4338ca;
+    --accent-glow: rgba(99, 102, 241, 0.22);
+    --accent-soft: rgba(99, 102, 241, 0.08);
+
+    /* Semantic palette */
+    --cyan: #22d3ee;
+    --success: #22c55e;
+    --warn: #f59e0b;
+
+    /* Gradients */
+    --grad-hero: radial-gradient(ellipse at 70% 40%, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 55%);
+    --grad-border: linear-gradient(135deg, rgba(99, 102, 241, 0.5) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(34, 211, 238, 0.3) 100%);
+    --grad-surface: linear-gradient(180deg, var(--surface) 0%, var(--bg-elev) 100%);
+    --grad-button: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-dim) 100%);
+    --grad-brand: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-dim) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 20px 40px -24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+    --shadow-elev: 0 40px 80px -32px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(99, 102, 241, 0.08) inset, 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+    --shadow-glow: 0 40px 80px -32px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(99, 102, 241, 0.12) inset, 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+    --shadow-button: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 6px 16px -6px rgba(99, 102, 241, 0.6), 0 0 0 1px rgba(99, 102, 241, 0.1);
+    --shadow-button-hover: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 12px 28px -8px rgba(99, 102, 241, 0.7), 0 0 0 1px rgba(99, 102, 241, 0.2);
+    --shadow-mark: 0 4px 12px -2px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+
+    /* Radius scale */
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 12px;
+    --r-xl: 14px;
+    --r-2xl: 16px;
+
+    /* Spacing scale */
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 12px;
+    --s-4: 16px;
+    --s-5: 20px;
+    --s-6: 24px;
+    --s-8: 32px;
+    --s-10: 40px;
+    --s-12: 48px;
+    --s-14: 56px;
+    --s-16: 64px;
+    --s-18: 72px;
+    --s-24: 96px;
+    --s-30: 120px;
+
+    /* Type families */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Type scale */
+    --fs-h1: clamp(40px, 4.6vw, 60px);
+    --fs-h2: clamp(28px, 3.4vw, 42px);
+    --fs-h3: 20px;
+    --fs-h4: 15px;
+    --fs-body: 16px;
+    --fs-body-sm: 15px;
+    --fs-small: 14px;
+    --fs-micro: 13px;
+    --fs-caption: 12px;
+    --fs-overline: 11px;
+
+    /* Line heights */
+    --lh-tight: 1.08;
+    --lh-snug: 1.12;
+    --lh-normal: 1.55;
+    --lh-relaxed: 1.65;
+
+    /* Letter spacing */
+    --ls-tight: -0.035em;
+    --ls-snug: -0.025em;
+    --ls-normal: -0.015em;
+    --ls-wide: 0.04em;
+    --ls-wider: 0.08em;
+    --ls-widest: 0.14em;
+
+    /* Motion */
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --d-1: 120ms;
+    --d-2: 180ms;
+    --d-3: 220ms;
+    --d-4: 300ms;
+    --d-5: 400ms;
+
+    /* Z-index scale */
+    --z-canvas: -1;
+    --z-base: 0;
+    --z-content: 1;
+    --z-nav: 50;
+    --z-cursor: 60;
+    --z-modal: 100;
+}
+
+/* Global reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Scroll behavior handled by Lenis, not native smooth-scroll */
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: var(--lh-normal);
+    font-size: var(--fs-body);
+    font-feature-settings: 'ss01', 'cv11';
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Reduced motion compliance */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: var(--text);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--surface-2);
+    border-radius: 5px;
+    border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-strong);
+}
+
+/* Focus rings */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+}

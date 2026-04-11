@@ -1,0 +1,176 @@
+/* Sylvaris Solutions - motion initial states
+ *
+ * Elements marked with [data-animate] start hidden and are revealed by the
+ * motion system in src/motion/. The motion-ready class on <html> is added
+ * synchronously by src/motion/boot.js before first paint so there is no
+ * flash of visible content. If JS fails, the html.motion-ready class is
+ * never set, so data-animate elements remain visible (graceful fallback).
+ */
+
+html.motion-ready [data-animate="fade-up"] {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+html.motion-ready [data-animate="fade"] {
+    opacity: 0;
+}
+
+html.motion-ready [data-animate="slide-left"] {
+    opacity: 0;
+    transform: translateX(-24px);
+}
+
+html.motion-ready [data-animate="slide-right"] {
+    opacity: 0;
+    transform: translateX(24px);
+}
+
+html.motion-ready [data-animate="tilt-in"] {
+    opacity: 0;
+    transform: translateY(24px) rotateX(8deg);
+}
+
+html.motion-ready [data-animate="scale-in"] {
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+/* Hero-specific initial states */
+html.motion-ready .hero-copy .overline,
+html.motion-ready .hero-sub,
+html.motion-ready .hero-actions,
+html.motion-ready .hero-trust span {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+html.motion-ready .cockpit {
+    opacity: 0;
+    transform: translateY(24px) rotateX(8deg);
+}
+
+html.motion-ready .cockpit-row {
+    opacity: 0;
+    transform: translateX(12px);
+}
+
+/* Section heads reveal on scroll */
+html.motion-ready .section-head,
+html.motion-ready .problem-copy,
+html.motion-ready .problem-panel,
+html.motion-ready .final-copy,
+html.motion-ready .final-meta,
+html.motion-ready .faq-intro,
+html.motion-ready .compare-wrap,
+html.motion-ready .callout,
+html.motion-ready .trust-strip .overline {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+html.motion-ready .product,
+html.motion-ready .showcase-card,
+html.motion-ready .process-step,
+html.motion-ready .price,
+html.motion-ready .risk-item,
+html.motion-ready .trust-item,
+html.motion-ready .faq-item,
+html.motion-ready .compare tr {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+html.motion-ready .problem-stat-num {
+    opacity: 0;
+}
+
+/* Nav entrance */
+html.motion-ready .nav {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+html.motion-ready .nav .brand,
+html.motion-ready .nav .nav-links li,
+html.motion-ready .nav .nav-cta .btn {
+    opacity: 0;
+}
+
+/* Cursor glow element */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.04) 35%, transparent 65%);
+    pointer-events: none;
+    z-index: var(--z-cursor);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 400ms var(--ease);
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+.cursor-glow.visible { opacity: 1; }
+
+@media (pointer: coarse) {
+    .cursor-glow { display: none; }
+}
+
+/* WebGL ambient canvas */
+.ambient-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Word-split containers */
+.split-line { display: block; overflow: hidden; }
+.split-word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+/* Reduced motion fallback - override any hidden states */
+@media (prefers-reduced-motion: reduce) {
+    html.motion-ready [data-animate],
+    html.motion-ready .hero-copy .overline,
+    html.motion-ready .hero-sub,
+    html.motion-ready .hero-actions,
+    html.motion-ready .hero-trust span,
+    html.motion-ready .cockpit,
+    html.motion-ready .cockpit-row,
+    html.motion-ready .section-head,
+    html.motion-ready .problem-copy,
+    html.motion-ready .problem-panel,
+    html.motion-ready .final-copy,
+    html.motion-ready .final-meta,
+    html.motion-ready .faq-intro,
+    html.motion-ready .compare-wrap,
+    html.motion-ready .callout,
+    html.motion-ready .trust-strip .overline,
+    html.motion-ready .product,
+    html.motion-ready .showcase-card,
+    html.motion-ready .process-step,
+    html.motion-ready .price,
+    html.motion-ready .risk-item,
+    html.motion-ready .trust-item,
+    html.motion-ready .faq-item,
+    html.motion-ready .compare tr,
+    html.motion-ready .problem-stat-num,
+    html.motion-ready .nav,
+    html.motion-ready .nav .brand,
+    html.motion-ready .nav .nav-links li,
+    html.motion-ready .nav .nav-cta .btn {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .cursor-glow { display: none; }
+    .ambient-canvas { display: none; }
+}
