@@ -45,9 +45,9 @@ body {
 .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
 .container {
-    max-width: 1120px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
 }
 
 .overline {
@@ -66,8 +66,8 @@ h1, h2, h3, h4 {
     line-height: 1.15;
 }
 
-h1 { font-size: clamp(40px, 6vw, 64px); letter-spacing: -0.035em; }
-h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.025em; }
+h1 { font-size: clamp(44px, 6.4vw, 80px); letter-spacing: -0.04em; }
+h2 { font-size: clamp(30px, 4.2vw, 46px); letter-spacing: -0.028em; }
 h3 { font-size: 20px; letter-spacing: -0.015em; }
 h4 { font-size: 15px; font-weight: 500; }
 
@@ -152,33 +152,147 @@ a { color: var(--text); text-decoration: none; }
 .hero {
     padding: 120px 0 96px;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
 }
-.hero-inner { max-width: 760px; }
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 72px;
+    align-items: center;
+}
+.hero-copy { max-width: 620px; }
 .hero .overline { margin-bottom: 20px; }
-.hero h1 { margin-bottom: 20px; }
+.hero h1 { margin-bottom: 22px; }
 .hero-sub {
     font-size: 18px;
     color: var(--text-dim);
-    max-width: 620px;
     margin-bottom: 36px;
+    max-width: 560px;
 }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .hero-trust {
     font-size: 13px;
     color: var(--text-mute);
     display: flex;
-    gap: 20px;
+    gap: 20px 24px;
     flex-wrap: wrap;
-    padding-top: 20px;
+    padding-top: 22px;
     border-top: 1px solid var(--border);
 }
-.hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-trust span { display: inline-flex; align-items: center; gap: 7px; }
 .hero-trust span::before {
     content: "";
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: var(--accent);
+}
+
+/* Hero cockpit - operational status panel on the right */
+.cockpit {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    box-shadow: 0 40px 80px -40px rgba(91, 91, 240, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+.cockpit-head {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(91, 91, 240, 0.05);
+    border-bottom: 1px solid var(--border);
+}
+.cockpit-head .dots { display: flex; gap: 6px; }
+.cockpit-head .dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+}
+.cockpit-head .dots span:first-child { background: #22c55e; box-shadow: 0 0 8px #22c55e80; }
+.cockpit-head .title {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+}
+.cockpit-head .live {
+    margin-left: auto;
+    font-size: 10px;
+    color: #22c55e;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.cockpit-head .live::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.cockpit-body { padding: 6px 0; }
+.cockpit-row {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    gap: 14px;
+}
+.cockpit-row:last-child { border-bottom: none; }
+.cockpit-row .service {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--text);
+    font-weight: 500;
+}
+.cockpit-row .service::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+}
+.cockpit-row .metrics {
+    display: flex;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 11px;
+    flex-wrap: wrap;
+    justify-self: end;
+    text-align: right;
+}
+.cockpit-row .metrics b {
+    color: var(--text);
+    font-weight: 500;
+}
+.cockpit-row .metrics .accent { color: var(--accent); font-weight: 500; }
+.cockpit-foot {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 /* Section */
@@ -189,22 +303,63 @@ a { color: var(--text); text-decoration: none; }
 .section-head p { font-size: 16px; }
 
 /* Problem */
-.problem-stat {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    padding: 32px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin-top: 40px;
+.problem-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 72px;
+    align-items: center;
+}
+.problem-copy .overline { margin-bottom: 14px; }
+.problem-copy h2 { margin-bottom: 16px; }
+.problem-copy p { font-size: 16px; max-width: 520px; }
+.problem-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 36px 32px;
+    position: relative;
+}
+.problem-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 64px;
+    background: var(--accent);
+    border-radius: 3px 0 0 0;
+}
+.problem-panel .stat-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
 }
 .problem-stat-num {
-    font-size: 56px;
+    font-size: clamp(56px, 7vw, 84px);
     font-weight: 600;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     color: var(--text);
+    line-height: 1;
+    margin-bottom: 14px;
 }
-.problem-stat-label { font-size: 14px; color: var(--text-dim); }
+.problem-stat-label {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    max-width: 360px;
+}
+.problem-source {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.04em;
+}
 
 /* Products */
 .product {
@@ -312,14 +467,17 @@ a { color: var(--text); text-decoration: none; }
     gap: 20px;
 }
 .showcase-card {
-    padding: 28px;
+    padding: 24px 26px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    position: relative;
+    transition: border-color 200ms ease;
 }
+.showcase-card:hover { border-color: var(--text-mute); }
 .showcase-tag {
     display: inline-block;
     padding: 4px 10px;
@@ -371,6 +529,7 @@ a { color: var(--text); text-decoration: none; }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: stretch;
 }
 .price {
     padding: 32px 28px;
@@ -379,6 +538,7 @@ a { color: var(--text); text-decoration: none; }
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    min-height: 560px;
 }
 .price.featured { border-color: var(--accent); }
 .price-name { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
@@ -503,12 +663,42 @@ a { color: var(--text); text-decoration: none; }
 .final {
     padding: 96px 0;
     border-bottom: 1px solid var(--border);
+    position: relative;
 }
-.final-inner {
-    max-width: 640px;
+.final-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 72px;
+    align-items: center;
 }
-.final h2 { margin-bottom: 16px; }
-.final p { margin-bottom: 28px; font-size: 16px; }
+.final-copy h2 { margin-bottom: 16px; }
+.final-copy p { margin-bottom: 28px; font-size: 16px; max-width: 520px; }
+.final-meta {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+}
+.final-meta-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+}
+.final-meta-row:last-child { border-bottom: none; }
+.final-meta-row b { color: var(--text); font-weight: 500; }
+.final-meta-head {
+    font-size: 11px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 6px;
+}
 
 /* Footer */
 .footer {
@@ -555,6 +745,13 @@ a { color: var(--text); text-decoration: none; }
     .trust-row { grid-template-columns: repeat(3, 1fr); }
 }
 
+@media (max-width: 1100px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 56px; }
+    .hero-copy { max-width: 100%; }
+    .problem-layout { grid-template-columns: 1fr; gap: 40px; }
+    .final-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
 @media (max-width: 880px) {
     .nav-links, .nav-cta .btn-ghost { display: none; }
     .nav-toggle { display: block; }
@@ -564,10 +761,14 @@ a { color: var(--text); text-decoration: none; }
     .showcase-grid { grid-template-columns: 1fr; }
     .process { grid-template-columns: 1fr 1fr; }
     .pricing { grid-template-columns: 1fr; }
+    .price { min-height: auto; }
     .risk-grid { grid-template-columns: 1fr; gap: 20px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-brand { grid-column: 1 / -1; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .cockpit-row { grid-template-columns: 1fr; gap: 6px; }
+    .cockpit-row .metrics { justify-self: start; text-align: left; }
+    .problem-panel { padding: 28px; }
 }
 
 @media (max-width: 560px) {
@@ -606,32 +807,68 @@ a { color: var(--text); text-decoration: none; }
 
 <section class="hero">
     <div class="container hero-inner">
-        <span class="overline">Sylvaris Solutions LLC</span>
-        <h1>Enterprise AI systems, deployed in weeks.</h1>
-        <p class="hero-sub">Sylvaris builds and operates production AI for back-office and clinical operations. Fixed scope. Fixed fee. Live in 2 to 4 weeks.</p>
-        <div class="hero-actions">
-            <a href="#contact" class="btn">Book a demo</a>
-            <a href="#products" class="btn btn-ghost">See the products</a>
+        <div class="hero-copy">
+            <span class="overline">Sylvaris Solutions LLC</span>
+            <h1>Enterprise AI systems, deployed in weeks.</h1>
+            <p class="hero-sub">Sylvaris builds and operates production AI for back-office and clinical operations. Fixed scope. Fixed fee. Live in 2 to 4 weeks.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn">Book a demo</a>
+                <a href="#products" class="btn btn-ghost">See the products</a>
+            </div>
+            <div class="hero-trust">
+                <span>HIPAA-aware</span>
+                <span>BAAs signed</span>
+                <span>No training on your data</span>
+                <span>Full data export on exit</span>
+            </div>
         </div>
-        <div class="hero-trust">
-            <span>HIPAA-aware</span>
-            <span>BAAs signed</span>
-            <span>No training on your data</span>
-            <span>Full data export on exit</span>
+
+        <div class="cockpit" aria-hidden="true">
+            <div class="cockpit-head">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <div class="title">sylvaris.ops / systems</div>
+                <div class="live">Operational</div>
+            </div>
+            <div class="cockpit-body">
+                <div class="cockpit-row">
+                    <div class="service">BPO Commander</div>
+                    <div class="metrics"><span>SLA <b>98.2%</b></span><span>Resolved 24h <span class="accent">1,084</span></span></div>
+                </div>
+                <div class="cockpit-row">
+                    <div class="service">CliniFlow</div>
+                    <div class="metrics"><span>Intake <b>44/48</b></span><span>No-show rescued <span class="accent">6</span></span></div>
+                </div>
+                <div class="cockpit-row">
+                    <div class="service">Real Estate Commander</div>
+                    <div class="metrics"><span>Active <b>37</b></span><span>Pipeline <span class="accent">$4.2M</span></span></div>
+                </div>
+                <div class="cockpit-row">
+                    <div class="service">Referral Hunter</div>
+                    <div class="metrics"><span>Open <b>23</b></span><span>Candidates <span class="accent">117</span></span></div>
+                </div>
+            </div>
+            <div class="cockpit-foot">
+                <span>4 systems running</span>
+                <span>Last update 00:00:12</span>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="section" id="problem">
     <div class="container">
-        <div class="section-head">
-            <span class="overline">The problem</span>
-            <h2>Most enterprise AI never reaches production.</h2>
-            <p>The average enterprise AI initiative stalls in discovery, vendor review, and proof-of-concept. Sylvaris delivers finished operational systems on a fixed timeline.</p>
-        </div>
-        <div class="problem-stat">
-            <div class="problem-stat-num mono">$2.4M</div>
-            <div class="problem-stat-label">Average spend on an enterprise AI project that never reaches production. Gartner, 2025.</div>
+        <div class="problem-layout">
+            <div class="problem-copy">
+                <span class="overline">The problem</span>
+                <h2>Most enterprise AI never reaches production.</h2>
+                <p>The average enterprise AI initiative stalls in discovery, vendor review, and proof-of-concept. Sylvaris delivers finished operational systems on a fixed timeline.</p>
+            </div>
+            <div class="problem-panel">
+                <div class="stat-label">Average project spend</div>
+                <div class="problem-stat-num mono">$2.4M</div>
+                <div class="problem-stat-label">Enterprise AI projects that never reach production still cost an average of $2.4M in discovery, vendor evaluation, and proof-of-concept work.</div>
+                <div class="problem-source">Source: Gartner, 2025</div>
+            </div>
         </div>
     </div>
 </section>
@@ -925,11 +1162,23 @@ a { color: var(--text); text-decoration: none; }
 </section>
 
 <section class="final" id="contact">
-    <div class="container final-inner">
-        <span class="overline">Get started</span>
-        <h2 style="margin-top:14px">Book a 15-minute demo.</h2>
-        <p>See a Sylvaris product running against realistic operational data. Fit is confirmed or declined on the first call.</p>
-        <a href="mailto:sylvarissolutions@gmail.com?subject=Sylvaris%20demo%20request" class="btn">Book a demo</a>
+    <div class="container">
+        <div class="final-layout">
+            <div class="final-copy">
+                <span class="overline">Get started</span>
+                <h2 style="margin-top:14px">Book a 15-minute demo.</h2>
+                <p>See a Sylvaris product running against realistic operational data. Fit is confirmed or declined on the first call.</p>
+                <a href="mailto:sylvarissolutions@gmail.com?subject=Sylvaris%20demo%20request" class="btn">Book a demo</a>
+            </div>
+            <div class="final-meta">
+                <div class="final-meta-head">What to expect</div>
+                <div class="final-meta-row"><span>Duration</span><b>15 minutes</b></div>
+                <div class="final-meta-row"><span>Format</span><b>Live product walkthrough</b></div>
+                <div class="final-meta-row"><span>Agenda</span><b>Fit, scope, timeline</b></div>
+                <div class="final-meta-row"><span>Follow-up</span><b>Proposal within 48 hours</b></div>
+                <div class="final-meta-row"><span>Commitment</span><b>None</b></div>
+            </div>
+        </div>
     </div>
 </section>
 
