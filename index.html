@@ -651,7 +651,43 @@ a { color: var(--text); text-decoration: none; }
 }
 
 /* FAQ */
-.faq { max-width: 760px; }
+.faq-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.4fr;
+    gap: 72px;
+    align-items: start;
+}
+.faq-intro {
+    position: relative;
+    padding-left: 20px;
+    position: sticky;
+    top: 96px;
+}
+.faq-intro::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+.faq-intro .overline { margin-bottom: 14px; }
+.faq-intro h2 { margin-bottom: 16px; }
+.faq-intro p { font-size: 15px; color: var(--text-dim); margin-bottom: 24px; max-width: 360px; }
+.faq-aside {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+    max-width: 360px;
+}
+.faq-aside b { display: block; color: var(--text); font-weight: 500; margin-bottom: 6px; font-size: 14px; }
+.faq-aside a { color: var(--accent); }
+.faq { border-top: 1px solid var(--border); }
 .faq-item {
     border-bottom: 1px solid var(--border);
 }
@@ -793,6 +829,8 @@ a { color: var(--text); text-decoration: none; }
     .hero-copy { max-width: 100%; }
     .problem-layout { grid-template-columns: 1fr; gap: 40px; }
     .final-layout { grid-template-columns: 1fr; gap: 40px; }
+    .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+    .faq-intro { position: static; }
 }
 
 @media (max-width: 880px) {
@@ -1167,11 +1205,17 @@ a { color: var(--text); text-decoration: none; }
 
 <section class="section" id="faq">
     <div class="container">
-        <div class="section-head">
-            <span class="overline">FAQ</span>
-            <h2>The questions buyers actually ask.</h2>
-        </div>
-        <div class="faq">
+        <div class="faq-layout">
+            <div class="faq-intro">
+                <span class="overline">FAQ</span>
+                <h2>The questions buyers actually ask.</h2>
+                <p>The money, compliance, exit, and operational questions every enterprise buyer brings to the first call. Answered up front so the first call can cover something better.</p>
+                <div class="faq-aside">
+                    <b>Something not covered?</b>
+                    Write to <a href="mailto:sylvarissolutions@gmail.com?subject=Question">sylvarissolutions@gmail.com</a> and expect a direct answer within one business day.
+                </div>
+            </div>
+            <div class="faq">
             <div class="faq-item">
                 <button class="faq-q">Does Sylvaris train models on our data?</button>
                 <div class="faq-a">No. Deployments run under enterprise API terms that prohibit training on customer inputs. Customer data remains in the customer database and audit logs.</div>
@@ -1199,6 +1243,7 @@ a { color: var(--text); text-decoration: none; }
             <div class="faq-item">
                 <button class="faq-q">How do change orders and payment work?</button>
                 <div class="faq-a">Fixed-scope engagements do not have change orders inside the agreed scope. Scope expansions are quoted as a separate fixed fee before work begins. Payment is 50% at signature and 50% at go-live for the build fee. Monthly retainer begins the month after go-live, net 15.</div>
+            </div>
             </div>
         </div>
     </div>
