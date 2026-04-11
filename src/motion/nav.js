@@ -1,5 +1,5 @@
-// Nav entrance + scroll-state toggle.
-import { animate, stagger } from 'motion';
+// Nav entrance + scroll-state toggle (GSAP only, no Motion One).
+import { gsap } from 'gsap';
 
 export function initNav() {
     const nav = document.querySelector('.nav');
@@ -9,17 +9,17 @@ export function initNav() {
 
     if (!nav) return;
 
-    // Entrance - runs 80ms after page load to yield to LCP paint
-    setTimeout(() => {
-        animate(nav, { opacity: [0, 1], transform: ['translateY(-8px)', 'translateY(0)'] }, { duration: 0.4, easing: 'ease-out' });
-        if (brand) animate(brand, { opacity: [0, 1] }, { duration: 0.3, delay: 0.08 });
-        if (links.length) {
-            animate(links, { opacity: [0, 1], transform: ['translateX(-6px)', 'translateX(0)'] }, { duration: 0.28, delay: stagger(0.04, { start: 0.12 }) });
-        }
-        if (cta) animate(cta, { opacity: [0, 1] }, { duration: 0.28, delay: 0.24 });
-    }, 80);
+    // Prime initial states explicitly so GSAP knows the start values
+    gsap.set(links, { x: -6 });
 
-    // Scroll-state toggle - uses a 1px sentinel with IntersectionObserver
+    // Entrance timeline - runs 80ms after page load to yield to LCP paint
+    const tl = gsap.timeline({ delay: 0.08, defaults: { ease: 'power3.out' } });
+    tl.to(nav, { opacity: 1, y: 0, duration: 0.4 }, 0)
+      .to(brand, { opacity: 1, duration: 0.3 }, 0.08)
+      .to(links, { opacity: 1, x: 0, duration: 0.28, stagger: 0.04 }, 0.12)
+      .to(cta, { opacity: 1, duration: 0.28 }, 0.24);
+
+    // Scroll-state toggle - sentinel with IntersectionObserver
     const sentinel = document.createElement('div');
     sentinel.style.cssText = 'position:absolute;top:40px;left:0;width:1px;height:1px;pointer-events:none;';
     document.body.prepend(sentinel);
@@ -29,7 +29,6 @@ export function initNav() {
     }, { threshold: 0 });
     io.observe(sentinel);
 
-    // Nav link smooth scroll handled by Lenis (it intercepts anchor clicks)
     // Mobile menu toggle
     const toggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');

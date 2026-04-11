@@ -26,7 +26,6 @@ export default defineConfig({
             output: {
                 manualChunks: {
                     gsap: ['gsap'],
-                    motion: ['motion'],
                     ogl: ['ogl'],
                     lenis: ['lenis'],
                 },
