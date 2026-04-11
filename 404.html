@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Sylvaris Solutions LLC</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%236366f1'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter,system-ui' font-weight='600' font-size='18'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+.error-page {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    position: relative;
+    z-index: 1;
+}
+.error-inner {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 56px 48px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg-elev) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 40px 80px -32px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(99, 102, 241, 0.1) inset,
+                0 0 120px -20px rgba(99, 102, 241, 0.3);
+}
+.error-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--accent-bright);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.error-code::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warn);
+    box-shadow: 0 0 8px var(--warn);
+}
+.error-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(72px, 14vw, 140px);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(180deg, var(--text) 0%, var(--accent-bright) 140%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+}
+.error-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.015em;
+}
+.error-sub {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+.error-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-dim) 100%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset,
+                0 6px 16px -6px rgba(99, 102, 241, 0.6);
+    transition: transform 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+.error-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset,
+                0 12px 28px -8px rgba(99, 102, 241, 0.7);
+    color: #fff;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="/" class="brand">
+            <span class="brand-mark">S</span>
+            Sylvaris
+        </a>
+        <a href="/" class="nav-back">&larr; Back to home</a>
+    </div>
+</nav>
+
+<main class="error-page">
+    <div class="error-inner">
+        <div class="error-code">HTTP 404</div>
+        <div class="error-big">404</div>
+        <div class="error-title">Page not found.</div>
+        <p class="error-sub">The page you are looking for does not exist, has moved, or was never shipped in the first place.</p>
+        <a href="/" class="error-btn">Return to Sylvaris</a>
+    </div>
+</main>
+
+</body>
+</html>

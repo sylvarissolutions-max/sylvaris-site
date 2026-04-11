@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://sylvarissolutions.com/sitemap.xml
+
+Sitemap: https://sylvaris-site.vercel.app/sitemap.xml
