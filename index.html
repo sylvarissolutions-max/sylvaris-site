@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sylvaris Solutions - AI systems for enterprise operations</title>
-<meta name="description" content="Sylvaris Solutions builds production AI systems for BPO, real estate, healthcare, and recruiting. Four products. One opinionated stack. Deployed in weeks, not quarters.">
+<title>Sylvaris Solutions - Enterprise AI systems, deployed in weeks</title>
+<meta name="description" content="Sylvaris Solutions builds and operates production AI for back-office and clinical operations. Fixed scope, fixed fee, live in 2 to 4 weeks.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%235b5bf0'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter,system-ui' font-weight='600' font-size='18'>S</text></svg>">
-<meta property="og:title" content="Sylvaris Solutions - AI systems for enterprise operations">
-<meta property="og:description" content="Four production AI systems. One opinionated stack. Deployed in weeks.">
+<meta property="og:title" content="Sylvaris Solutions - Enterprise AI systems, deployed in weeks">
+<meta property="og:description" content="Fixed scope, fixed fee, live in 2 to 4 weeks. Operated on your behalf.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sylvarissolutions.com">
+<meta property="og:url" content="https://sylvaris-site.vercel.app">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sylvaris Solutions">
-<meta name="twitter:description" content="Production AI systems for enterprise operations.">
+<meta name="twitter:description" content="Enterprise AI systems, deployed in weeks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -162,35 +162,24 @@ a { color: var(--text); text-decoration: none; }
     max-width: 620px;
     margin-bottom: 36px;
 }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* Trusted / built-on */
-.built {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-}
-.built-label {
-    font-size: 12px;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-}
-.built-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 36px 48px;
-    align-items: center;
-}
-.built-item {
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero-trust {
     font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 500;
+    color: var(--text-mute);
     display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
 }
-.built-item svg { opacity: 0.7; }
+.hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-trust span::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+}
 
 /* Section */
 .section { padding: 96px 0; border-bottom: 1px solid var(--border); }
@@ -207,7 +196,7 @@ a { color: var(--text); text-decoration: none; }
     padding: 32px 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    margin: 40px 0;
+    margin-top: 40px;
 }
 .problem-stat-num {
     font-size: 56px;
@@ -216,13 +205,6 @@ a { color: var(--text); text-decoration: none; }
     color: var(--text);
 }
 .problem-stat-label { font-size: 14px; color: var(--text-dim); }
-.problem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-.problem-item h4 { margin-bottom: 8px; color: var(--text); }
-.problem-item p { font-size: 14px; }
 
 /* Products */
 .product {
@@ -244,6 +226,7 @@ a { color: var(--text); text-decoration: none; }
     color: var(--text-dim);
     padding-top: 20px;
     border-top: 1px solid var(--border);
+    flex-wrap: wrap;
 }
 .product-meta div strong { color: var(--text); display: block; font-weight: 500; }
 
@@ -314,10 +297,51 @@ a { color: var(--text); text-decoration: none; }
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
-.compare td:first-child { color: var(--text); }
+.compare tr:last-child td { border-bottom: none; }
+.compare td:first-child { color: var(--text); font-weight: 500; }
 .compare td:nth-child(2) { color: var(--text-mute); }
-.compare td:nth-child(3) { color: var(--text); font-weight: 500; }
+.compare td:nth-child(3) { color: var(--text); }
+.compare tr.sylvaris td { background: rgba(91, 91, 240, 0.06); }
+.compare tr.sylvaris td:first-child { color: var(--accent); font-weight: 600; }
 .compare-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+
+/* Selected work / showcase */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.showcase-card {
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.showcase-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    align-self: flex-start;
+}
+.showcase-card h4 { font-size: 18px; font-weight: 600; color: var(--text); letter-spacing: -0.015em; }
+.showcase-card p { font-size: 14px; color: var(--text-dim); }
+.showcase-meta {
+    font-size: 12px;
+    color: var(--text-mute);
+    padding-top: 14px;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+}
 
 /* Process */
 .process {
@@ -372,21 +396,70 @@ a { color: var(--text); text-decoration: none; }
 .price li::before { content: ""; width: 14px; flex-shrink: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%235b5bf0'%3E%3Cpath fill-rule='evenodd' d='M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center; }
 .price .btn { margin-top: auto; justify-content: center; }
 
-/* Quote */
-.quote {
-    max-width: 780px;
+/* Custom build callout */
+.callout {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.callout-text { flex: 1; min-width: 260px; }
+.callout-text strong { color: var(--text); font-weight: 500; font-size: 15px; display: block; margin-bottom: 4px; }
+.callout-text span { color: var(--text-dim); font-size: 13px; }
+
+/* Risk reversal band */
+.risk {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+}
+.risk h3 { font-size: 16px; margin-bottom: 24px; color: var(--text); font-weight: 500; }
+.risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.risk-item h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.risk-item p { font-size: 13px; color: var(--text-dim); }
+
+/* Trust strip */
+.trust-strip {
     padding: 48px 0;
+    border-bottom: 1px solid var(--border);
 }
-.quote-text {
-    font-size: 22px;
-    line-height: 1.5;
+.trust-strip .overline { margin-bottom: 20px; }
+.trust-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+.trust-item {
+    padding: 18px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
     color: var(--text);
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
 }
-.quote-attr { font-size: 13px; color: var(--text-dim); display: flex; align-items: center; gap: 12px; }
-.quote-attr strong { color: var(--text); font-weight: 500; }
-.quote-attr::before { content: ""; width: 32px; height: 1px; background: var(--border); }
 
 /* FAQ */
 .faq { max-width: 760px; }
@@ -444,12 +517,19 @@ a { color: var(--text); text-decoration: none; }
 }
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
     gap: 48px;
     margin-bottom: 48px;
 }
 .footer-brand .brand { margin-bottom: 16px; }
-.footer-brand p { font-size: 13px; max-width: 260px; }
+.footer-brand p { font-size: 13px; max-width: 280px; margin-bottom: 12px; }
+.footer-brand .founder {
+    font-size: 12px;
+    color: var(--text-mute);
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    max-width: 280px;
+}
 .footer-col h5 {
     font-size: 12px;
     text-transform: uppercase;
@@ -471,15 +551,20 @@ a { color: var(--text); text-decoration: none; }
     color: var(--text-mute);
 }
 
+@media (max-width: 1024px) {
+    .trust-row { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 880px) {
     .nav-links, .nav-cta .btn-ghost { display: none; }
     .nav-toggle { display: block; }
     .hero { padding: 80px 0 64px; }
     .section { padding: 72px 0; }
-    .problem-grid { grid-template-columns: 1fr; gap: 24px; }
     .product { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+    .showcase-grid { grid-template-columns: 1fr; }
     .process { grid-template-columns: 1fr 1fr; }
     .pricing { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; gap: 20px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-brand { grid-column: 1 / -1; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -487,6 +572,7 @@ a { color: var(--text); text-decoration: none; }
 
 @media (max-width: 560px) {
     .process { grid-template-columns: 1fr; }
+    .trust-row { grid-template-columns: 1fr 1fr; }
     .problem-stat { flex-direction: column; align-items: flex-start; gap: 6px; }
     .problem-stat-num { font-size: 44px; }
     .hero-actions { flex-direction: column; align-items: stretch; }
@@ -505,7 +591,7 @@ a { color: var(--text); text-decoration: none; }
         </a>
         <ul class="nav-links">
             <li><a href="#products">Products</a></li>
-            <li><a href="#process">How it works</a></li>
+            <li><a href="#process">Process</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -521,27 +607,17 @@ a { color: var(--text); text-decoration: none; }
 <section class="hero">
     <div class="container hero-inner">
         <span class="overline">Sylvaris Solutions LLC</span>
-        <h1>Production AI systems for the operations nobody wants to run.</h1>
-        <p class="hero-sub">We build and deploy opinionated AI systems for BPO, real estate, healthcare, and recruiting. Four products. One stack. Deployed in weeks, not quarters.</p>
+        <h1>Enterprise AI systems, deployed in weeks.</h1>
+        <p class="hero-sub">Sylvaris builds and operates production AI for back-office and clinical operations. Fixed scope. Fixed fee. Live in 2 to 4 weeks.</p>
         <div class="hero-actions">
-            <a href="#contact" class="btn">Book a 15-min demo</a>
+            <a href="#contact" class="btn">Book a demo</a>
             <a href="#products" class="btn btn-ghost">See the products</a>
         </div>
-    </div>
-</section>
-
-<section class="built">
-    <div class="container">
-        <div class="built-label">Built on</div>
-        <div class="built-row">
-            <div class="built-item">Node.js</div>
-            <div class="built-item">Next.js</div>
-            <div class="built-item">PostgreSQL</div>
-            <div class="built-item">Anthropic Claude</div>
-            <div class="built-item">OpenAI</div>
-            <div class="built-item">Twilio</div>
-            <div class="built-item">Supabase</div>
-            <div class="built-item">Render</div>
+        <div class="hero-trust">
+            <span>HIPAA-aware</span>
+            <span>BAAs signed</span>
+            <span>No training on your data</span>
+            <span>Full data export on exit</span>
         </div>
     </div>
 </section>
@@ -550,28 +626,12 @@ a { color: var(--text); text-decoration: none; }
     <div class="container">
         <div class="section-head">
             <span class="overline">The problem</span>
-            <h2>Operations teams burn cash on work that software should do.</h2>
-            <p>Enterprise AI projects keep stalling because they start with platforms instead of problems. We skip the platform and ship the problem.</p>
+            <h2>Most enterprise AI never reaches production.</h2>
+            <p>The average enterprise AI initiative stalls in discovery, vendor review, and proof-of-concept. Sylvaris delivers finished operational systems on a fixed timeline.</p>
         </div>
-
         <div class="problem-stat">
             <div class="problem-stat-num mono">$2.4M</div>
-            <div class="problem-stat-label">average cost of a single enterprise AI project that never reaches production. Gartner, 2025.</div>
-        </div>
-
-        <div class="problem-grid">
-            <div class="problem-item">
-                <h4>Too much scaffolding</h4>
-                <p>Six-month discovery phases, vendor selection committees, and proofs-of-concept that ship nothing.</p>
-            </div>
-            <div class="problem-item">
-                <h4>No ops ownership</h4>
-                <p>ML teams deliver notebooks. Ops teams need runbooks, queues, alerts, and an on-call rotation.</p>
-            </div>
-            <div class="problem-item">
-                <h4>Integration debt</h4>
-                <p>Every project rebuilds auth, queuing, logging, and billing from scratch. We did it once, for four products.</p>
-            </div>
+            <div class="problem-stat-label">Average spend on an enterprise AI project that never reaches production. Gartner, 2025.</div>
         </div>
     </div>
 </section>
@@ -579,20 +639,20 @@ a { color: var(--text); text-decoration: none; }
 <section class="section" id="products">
     <div class="container">
         <div class="section-head">
-            <span class="overline">Four products</span>
-            <h2>Each one targets a specific operation. Each one is in production.</h2>
-            <p>Not a platform. Not a framework. Four focused systems that share a backend and run on the same opinionated stack.</p>
+            <span class="overline">Products</span>
+            <h2>Two commercial products. Each built for a single operation.</h2>
+            <p>Both shipped, both in production, both available for commercial deployment under the pricing below.</p>
         </div>
 
         <div class="product">
             <div class="product-info">
-                <span class="overline">01 / BPO Commander</span>
+                <span class="overline">BPO Commander</span>
                 <h3>Autonomous back-office operations.</h3>
-                <p>Ticket triage, SLA enforcement, customer reply drafting, and escalation routing. Replaces a 5-person offshore team for a fraction of the cost.</p>
+                <p>Ticket triage, SLA enforcement, response drafting, and escalation routing for support and back-office teams. Deployed in 2 to 3 weeks against your existing helpdesk.</p>
                 <div class="product-meta">
-                    <div><strong>Target</strong>SMB BPO firms</div>
-                    <div><strong>Deploy</strong>2-3 weeks</div>
-                    <div><strong>Integrations</strong>Zendesk, Intercom, Slack</div>
+                    <div><strong>Buyer</strong>SMB and mid-market BPO</div>
+                    <div><strong>Deploy</strong>2 to 3 weeks</div>
+                    <div><strong>Status</strong>Commercially available</div>
                 </div>
             </div>
             <div class="mock">
@@ -612,42 +672,6 @@ a { color: var(--text); text-decoration: none; }
 
         <div class="product">
             <div class="mock">
-                <div class="mock-bar"><span class="mock-dot live"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">re-commander / portfolio</span></div>
-                <div class="mock-grid">
-                    <div class="mock-cell"><div class="mock-cell-label">Active</div><div class="mock-cell-val">37</div></div>
-                    <div class="mock-cell"><div class="mock-cell-label">Offers</div><div class="mock-cell-val accent">12</div></div>
-                    <div class="mock-cell"><div class="mock-cell-label">Closings Q2</div><div class="mock-cell-val">$4.2M</div></div>
-                </div>
-                <div class="mock-rows">
-                    <div class="mock-row">2847 Elm St underwriting <span class="ok">approved</span></div>
-                    <div class="mock-row">914 Oak Ave lead scoring <span class="ok">hot</span></div>
-                    <div class="mock-row">501 Main St outreach <span class="pending">sent</span></div>
-                </div>
-            </div>
-            <div class="product-info">
-                <span class="overline">02 / Real Estate Commander</span>
-                <h3>Underwriting and deal desk for active investors.</h3>
-                <p>Property ingest, comp analysis, offer drafting, lead outreach. Built for investors running 20+ concurrent deals who refuse to hire junior analysts.</p>
-                <div class="product-meta">
-                    <div><strong>Status</strong>Internal tool</div>
-                    <div><strong>Deploy</strong>Sylvaris-operated</div>
-                    <div><strong>Access</strong>Licensed only</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-info">
-                <span class="overline">03 / CliniFlow</span>
-                <h3>Patient intake and appointment workflow for clinics.</h3>
-                <p>Symptom triage, pre-visit form collection, appointment reminders, no-show rescue calls. HIPAA-aware architecture from day one.</p>
-                <div class="product-meta">
-                    <div><strong>Target</strong>Clinics 5-50 providers</div>
-                    <div><strong>Deploy</strong>3-4 weeks</div>
-                    <div><strong>Integrations</strong>EMR, Twilio, Stripe</div>
-                </div>
-            </div>
-            <div class="mock">
                 <div class="mock-bar"><span class="mock-dot live"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">cliniflow / today</span></div>
                 <div class="mock-grid">
                     <div class="mock-cell"><div class="mock-cell-label">Appointments</div><div class="mock-cell-val">48</div></div>
@@ -655,35 +679,19 @@ a { color: var(--text); text-decoration: none; }
                     <div class="mock-cell"><div class="mock-cell-label">No-show rescued</div><div class="mock-cell-val">6</div></div>
                 </div>
                 <div class="mock-rows">
-                    <div class="mock-row">09:15 Dr. Chen annual physical <span class="ok">intake complete</span></div>
-                    <div class="mock-row">10:30 Dr. Park follow-up <span class="ok">reminded</span></div>
-                    <div class="mock-row">11:00 Dr. Chen new patient <span class="pending">form pending</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="mock">
-                <div class="mock-bar"><span class="mock-dot live"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">referral-hunter / bounties</span></div>
-                <div class="mock-grid">
-                    <div class="mock-cell"><div class="mock-cell-label">Open bounties</div><div class="mock-cell-val">23</div></div>
-                    <div class="mock-cell"><div class="mock-cell-label">Candidates</div><div class="mock-cell-val accent">117</div></div>
-                    <div class="mock-cell"><div class="mock-cell-label">Placements YTD</div><div class="mock-cell-val">$86K</div></div>
-                </div>
-                <div class="mock-rows">
-                    <div class="mock-row">Senior ML engineer $15K <span class="ok">4 matches</span></div>
-                    <div class="mock-row">Rust backend dev $8K <span class="ok">2 matches</span></div>
-                    <div class="mock-row">DevOps lead $12K <span class="pending">sourcing</span></div>
+                    <div class="mock-row">09:15 annual physical <span class="ok">intake complete</span></div>
+                    <div class="mock-row">10:30 follow-up visit <span class="ok">reminded</span></div>
+                    <div class="mock-row">11:00 new patient <span class="pending">form pending</span></div>
                 </div>
             </div>
             <div class="product-info">
-                <span class="overline">04 / Referral Hunter</span>
-                <h3>Autonomous referral bounty tracking and placement.</h3>
-                <p>Tracks public referral bounties across companies, matches candidates from a private pool, and handles the outreach sequence. Built for recruiters and talent scouts working on pure commission.</p>
+                <span class="overline">CliniFlow</span>
+                <h3>Patient intake and scheduling for clinics.</h3>
+                <p>Symptom triage, digital intake, appointment reminders, and no-show recovery. Built around HIPAA controls, audit logging, and BAA-ready deployment.</p>
                 <div class="product-meta">
-                    <div><strong>Target</strong>Independent recruiters</div>
-                    <div><strong>Deploy</strong>Self-serve SaaS</div>
-                    <div><strong>Model</strong>Subscription + success fee</div>
+                    <div><strong>Buyer</strong>Clinics with 5 to 50 providers</div>
+                    <div><strong>Deploy</strong>3 to 4 weeks</div>
+                    <div><strong>Status</strong>Commercially available</div>
                 </div>
             </div>
         </div>
@@ -693,39 +701,39 @@ a { color: var(--text); text-decoration: none; }
 <section class="section" id="compare">
     <div class="container">
         <div class="section-head">
-            <span class="overline">How we compare</span>
-            <h2>The usual choices, and where Sylvaris fits.</h2>
-            <p>Most enterprise AI buyers have three options. We built Sylvaris because none of them fit teams that need production ops, not another platform demo.</p>
+            <span class="overline">How it compares</span>
+            <h2>What the alternatives actually cost.</h2>
+            <p>Most enterprise AI buyers choose between consulting, platform, or in-house. Sylvaris replaces all three with a delivered system under fixed terms.</p>
         </div>
         <div class="compare-wrap">
             <table class="compare">
                 <thead>
                     <tr>
                         <th>Path</th>
+                        <th>What it costs</th>
                         <th>What you get</th>
-                        <th>Sylvaris</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Big-4 consultancy</td>
-                        <td>Slide decks, 9-month discovery, $800K bill</td>
-                        <td>Shipped product in 2-4 weeks</td>
+                        <td>Global consultancy</td>
+                        <td>6 to 12 months, seven figures</td>
+                        <td>Strategy deck and a pilot proposal</td>
                     </tr>
                     <tr>
                         <td>Generic AI platform</td>
-                        <td>Framework, empty dashboard, bring your own team</td>
-                        <td>Finished product with the ops wrapped in</td>
+                        <td>Annual license plus your own team</td>
+                        <td>Framework, no finished product</td>
                     </tr>
                     <tr>
                         <td>In-house build</td>
-                        <td>Hiring cycle, 6 months of plumbing, maintenance debt</td>
-                        <td>We operate it, you pay by the month</td>
+                        <td>6 months minimum, full hiring cycle</td>
+                        <td>Ongoing maintenance and key-person risk</td>
                     </tr>
-                    <tr>
-                        <td>Point SaaS tools</td>
-                        <td>Per-seat pricing, feature overlap, no customization</td>
-                        <td>One bill, one vendor, custom integrations included</td>
+                    <tr class="sylvaris">
+                        <td>Sylvaris</td>
+                        <td>$18K to custom, 2 to 4 weeks</td>
+                        <td>Running product, operated on your behalf</td>
                     </tr>
                 </tbody>
             </table>
@@ -733,28 +741,52 @@ a { color: var(--text); text-decoration: none; }
     </div>
 </section>
 
+<section class="section" id="showcase">
+    <div class="container">
+        <div class="section-head">
+            <span class="overline">Selected work</span>
+            <h2>Also shipped and operated by Sylvaris.</h2>
+            <p>Internal reference deployments across two additional verticals. Not publicly sold. Available under license to qualified partners only.</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-card">
+                <span class="showcase-tag">Internal reference</span>
+                <h4>Real Estate Commander</h4>
+                <p>Underwriting and deal desk automation for active investors. Property ingest, comparable analysis, offer generation, and outreach, operated as a live reference deployment.</p>
+                <div class="showcase-meta">Status: Operated by Sylvaris &nbsp;&middot;&nbsp; Access: Licensed partners only</div>
+            </div>
+            <div class="showcase-card">
+                <span class="showcase-tag">Internal reference</span>
+                <h4>Referral Hunter</h4>
+                <p>Referral bounty tracking and candidate placement. Aggregates public bounties, scores candidates against an internal pool, and sequences outreach.</p>
+                <div class="showcase-meta">Status: Operated by Sylvaris &nbsp;&middot;&nbsp; Access: Licensed partners only</div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section" id="process">
     <div class="container">
         <div class="section-head">
-            <span class="overline">How it works</span>
-            <h2>Four steps from first call to live deployment.</h2>
+            <span class="overline">Process</span>
+            <h2>From first call to live deployment in four steps.</h2>
         </div>
         <div class="process">
             <div class="process-step">
                 <h4>Discovery call</h4>
-                <p>30 minutes. We map your workflow and identify whether an existing product fits or a custom build is warranted.</p>
+                <p>A 30-minute scoping session to confirm fit, workflow, and integration surface.</p>
             </div>
             <div class="process-step">
                 <h4>Fixed-scope proposal</h4>
-                <p>Flat fee, fixed scope, firm date. No change orders unless you change the scope.</p>
+                <p>Flat fee, defined scope, committed delivery date. Change orders only on scope change.</p>
             </div>
             <div class="process-step">
                 <h4>Build and integrate</h4>
-                <p>We deploy into your infrastructure or ours. Weekly progress reviews. Full audit log.</p>
+                <p>Deployment into your environment or one operated by Sylvaris. Weekly reviews. Complete audit trail.</p>
             </div>
             <div class="process-step">
                 <h4>Operate and support</h4>
-                <p>Monthly retainer covers uptime, model updates, and reasonable change requests. On-call rotation included.</p>
+                <p>Monthly retainer covering uptime, updates, and in-scope changes. On-call rotation included.</p>
             </div>
         </div>
     </div>
@@ -764,57 +796,91 @@ a { color: var(--text); text-decoration: none; }
     <div class="container">
         <div class="section-head">
             <span class="overline">Pricing</span>
-            <h2>Flat fees. No seat charges. No platform upsells.</h2>
-            <p>Every engagement includes the build, integration, first 90 days of support, and a runbook your team can actually read.</p>
+            <h2>Fixed fees. Operated outcomes.</h2>
+            <p>Every engagement is scoped, priced, and dated up front. Build, integration, first 90 days of support, and a production runbook are included in every tier.</p>
         </div>
         <div class="pricing">
             <div class="price">
                 <div class="price-name">Pilot</div>
-                <div class="price-amt">$18K <small>fixed</small></div>
-                <div class="price-desc">One product, one workflow, standard integrations. 2-3 weeks from kickoff.</div>
+                <div class="price-amt">$18,000</div>
+                <div class="price-desc">One workflow in production within three weeks.</div>
                 <ul>
-                    <li>BPO, CliniFlow, or Referral Hunter</li>
+                    <li>Single workflow, fixed scope, firm date</li>
                     <li>Standard integration set</li>
-                    <li>Deployed to your Render or Vercel</li>
+                    <li>Deployed into your cloud or ours</li>
+                    <li>Audit log, access controls, admin console</li>
                     <li>90 days of post-launch support</li>
                 </ul>
-                <a href="#contact" class="btn btn-ghost">Book a demo</a>
+                <a href="#contact" class="btn btn-ghost">Scope a pilot</a>
             </div>
             <div class="price featured">
                 <div class="price-name">Production</div>
-                <div class="price-amt">$48K <small>+ $4K/mo</small></div>
-                <div class="price-desc">Full deployment with custom integrations and Sylvaris-operated on-call.</div>
+                <div class="price-amt">$48,000 <small>+ $4K/mo</small></div>
+                <div class="price-desc">Full deployment, operated on your behalf.</div>
                 <ul>
-                    <li>Any Sylvaris product</li>
-                    <li>Custom integrations</li>
-                    <li>SSO, audit logging, role-based access</li>
-                    <li>24/7 on-call rotation</li>
-                    <li>Quarterly model review</li>
+                    <li>BPO Commander or CliniFlow</li>
+                    <li>Custom integrations and reporting</li>
+                    <li>SSO, role-based access, full audit trail</li>
+                    <li>24/7 on-call with defined response SLAs</li>
+                    <li>Quarterly model and performance review</li>
+                    <li>Monthly executive report</li>
                 </ul>
-                <a href="#contact" class="btn">Book a demo</a>
+                <a href="#contact" class="btn">Start a production engagement</a>
             </div>
             <div class="price">
-                <div class="price-name">Custom build</div>
-                <div class="price-amt">From $75K</div>
-                <div class="price-desc">A new product built on the Sylvaris stack, owned by you or licensed from us.</div>
+                <div class="price-name">Enterprise</div>
+                <div class="price-amt">Custom</div>
+                <div class="price-desc">Procurement-ready deployment for regulated buyers.</div>
                 <ul>
-                    <li>New vertical or workflow</li>
-                    <li>Joint scoping with your team</li>
-                    <li>Source code delivered</li>
-                    <li>Optional white-label license</li>
+                    <li>HIPAA BAA and compliance commitments</li>
+                    <li>SOC 2 roadmap scoped into the engagement</li>
+                    <li>Dedicated delivery team and executive sponsor</li>
+                    <li>Custom SLA and data residency controls</li>
+                    <li>Master services agreement and procurement terms</li>
+                    <li>White-label and co-marketing options</li>
                 </ul>
-                <a href="#contact" class="btn btn-ghost">Book a demo</a>
+                <a href="#contact" class="btn btn-ghost">Contact sales</a>
+            </div>
+        </div>
+
+        <div class="callout">
+            <div class="callout-text">
+                <strong>Need a net-new product built for your vertical?</strong>
+                <span>Custom builds start at $75,000. Joint scoping, source code delivered, optional white-label license.</span>
+            </div>
+            <a href="#contact" class="btn btn-ghost btn-sm">Discuss a custom build</a>
+        </div>
+
+        <div class="risk">
+            <h3>How we de-risk the engagement.</h3>
+            <div class="risk-grid">
+                <div class="risk-item">
+                    <h4>Pilot credit</h4>
+                    <p>The full Pilot fee is credited against the Production build when you upgrade within 60 days of launch.</p>
+                </div>
+                <div class="risk-item">
+                    <h4>Delivery commitment</h4>
+                    <p>Fixed-scope engagements ship on the committed date or the final 20% of the build fee is waived.</p>
+                </div>
+                <div class="risk-item">
+                    <h4>Exit clause</h4>
+                    <p>At the end of any month, receive a full database export, deployment configuration, and a 30-day transition period.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="trust-strip">
     <div class="container">
-        <div class="quote">
-            <span class="overline">From the founder</span>
-            <p class="quote-text" style="margin-top:16px">"I built Sylvaris because every AI project I saw in the wild was either a slide deck or a science experiment. None of them ran on a Monday morning. We ship the thing that runs on a Monday morning."</p>
-            <div class="quote-attr"><strong>Saul Diaz</strong> Founder, Sylvaris Solutions LLC</div>
+        <span class="overline">Security and trust</span>
+        <div class="trust-row">
+            <div class="trust-item">HIPAA-aware</div>
+            <div class="trust-item">BAA available</div>
+            <div class="trust-item">DPA available</div>
+            <div class="trust-item">SSO + RBAC</div>
+            <div class="trust-item">No model training on your data</div>
+            <div class="trust-item">Full data export on exit</div>
         </div>
     </div>
 </section>
@@ -827,28 +893,32 @@ a { color: var(--text); text-decoration: none; }
         </div>
         <div class="faq">
             <div class="faq-item">
-                <button class="faq-q">Do you use our data to train models?</button>
-                <div class="faq-a">No. We use the Anthropic and OpenAI APIs under their enterprise terms, which prohibit training on your inputs. Your data stays in your database and in your logs.</div>
+                <button class="faq-q">Does Sylvaris train models on our data?</button>
+                <div class="faq-a">No. Deployments run under enterprise API terms that prohibit training on customer inputs. Customer data remains in the customer database and audit logs.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-q">What happens when the underlying models change?</button>
-                <div class="faq-a">Our production contracts include quarterly model review. When a new model lands, we evaluate it against your live workload and upgrade or hold as appropriate. You pay nothing extra for the review.</div>
+                <button class="faq-q">What happens when underlying models change?</button>
+                <div class="faq-a">Production contracts include quarterly model review. New models are evaluated against live workloads and promoted or held based on measured performance. No additional charge.</div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">Can we self-host?</button>
-                <div class="faq-a">Yes for BPO Commander, CliniFlow, and Referral Hunter. Real Estate Commander is Sylvaris-operated only because it depends on internal data we license. Self-hosting is a flat-fee license with a support retainer.</div>
+                <div class="faq-a">BPO Commander and CliniFlow support self-hosted deployment under a flat-fee license and support retainer. Real Estate Commander and Referral Hunter are operated by Sylvaris and are not available for self-hosting.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-q">How is this different from just using ChatGPT?</button>
-                <div class="faq-a">ChatGPT is a chat window. Sylvaris products are full operational systems with queues, state, auth, audit logs, integrations, and alerting. We use LLMs the same way a car uses an engine. The car is the product.</div>
+                <button class="faq-q">What does a Sylvaris product include beyond the model?</button>
+                <div class="faq-a">Each product is a complete operational system: queues, state management, authentication, audit logging, alerting, and integrations with the tools your team already runs. The model is one component inside a production application.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-q">What does the exit look like if we stop working together?</button>
-                <div class="faq-a">Pilot and Production engagements hand you the database export, the deployment configs, and a transition runbook. You keep everything you would need to run the product without us, minus our ongoing operations labor.</div>
+                <button class="faq-q">What does the exit path look like?</button>
+                <div class="faq-a">Pilot and Production engagements include a database export, deployment configuration, and transition runbook at termination. Customers retain everything required to continue running the product independently.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-q">Do you sign BAAs, DPAs, or SOC 2 attestations?</button>
-                <div class="faq-a">BAAs yes for CliniFlow deployments. DPAs yes. We are not currently SOC 2 attested and we will say so up front. If you require SOC 2, we can discuss a path to get there as part of a larger engagement.</div>
+                <button class="faq-q">Do you sign BAAs, DPAs, or hold SOC 2?</button>
+                <div class="faq-a">BAAs available for CliniFlow deployments. DPAs available for all engagements. SOC 2 attestation is not currently held; a path to attestation can be scoped as part of an Enterprise engagement.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">How do change orders and payment work?</button>
+                <div class="faq-a">Fixed-scope engagements do not have change orders inside the agreed scope. Scope expansions are quoted as a separate fixed fee before work begins. Payment is 50% at signature and 50% at go-live for the build fee. Monthly retainer begins the month after go-live, net 15.</div>
             </div>
         </div>
     </div>
@@ -858,8 +928,8 @@ a { color: var(--text); text-decoration: none; }
     <div class="container final-inner">
         <span class="overline">Get started</span>
         <h2 style="margin-top:14px">Book a 15-minute demo.</h2>
-        <p>We will show you one product running live against realistic data. If it is not a fit, we will tell you in the first call and point you somewhere better.</p>
-        <a href="mailto:founder@sylvarissolutions.com?subject=Sylvaris%20demo%20request" class="btn">Book a 15-min demo</a>
+        <p>See a Sylvaris product running against realistic operational data. Fit is confirmed or declined on the first call.</p>
+        <a href="mailto:sylvarissolutions@gmail.com?subject=Sylvaris%20demo%20request" class="btn">Book a demo</a>
     </div>
 </section>
 
@@ -868,32 +938,26 @@ a { color: var(--text); text-decoration: none; }
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#" class="brand"><span class="brand-mark">S</span>Sylvaris</a>
-                <p>Production AI systems for the operations nobody wants to run. Sylvaris Solutions LLC.</p>
+                <p>Enterprise AI systems, built and operated by Sylvaris Solutions LLC.</p>
+                <div class="founder">Founded and operated by Saul Diaz.</div>
             </div>
             <div class="footer-col">
-                <h5>Product</h5>
+                <h5>Products</h5>
                 <ul>
                     <li><a href="#products">BPO Commander</a></li>
-                    <li><a href="#products">Real Estate Commander</a></li>
                     <li><a href="#products">CliniFlow</a></li>
-                    <li><a href="#products">Referral Hunter</a></li>
+                    <li><a href="#showcase">Real Estate Commander</a></li>
+                    <li><a href="#showcase">Referral Hunter</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Company</h5>
                 <ul>
                     <li><a href="#problem">About</a></li>
-                    <li><a href="#process">How it works</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Resources</h5>
-                <ul>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#compare">Compare</a></li>
-                    <li><a href="#contact">Book a demo</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -907,7 +971,7 @@ a { color: var(--text); text-decoration: none; }
         </div>
         <div class="footer-bottom">
             <div>&copy; 2026 Sylvaris Solutions LLC. All rights reserved.</div>
-            <div>founder@sylvarissolutions.com</div>
+            <div>sylvarissolutions@gmail.com</div>
         </div>
     </div>
 </footer>
