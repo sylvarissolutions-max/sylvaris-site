@@ -22,6 +22,10 @@ export default defineConfig({
                 terms: resolve(__dirname, 'src/terms.html'),
                 dpa: resolve(__dirname, 'src/dpa.html'),
                 notFound: resolve(__dirname, 'src/404.html'),
+                bpoCommander: resolve(__dirname, 'src/products/bpo-commander.html'),
+                cliniflow: resolve(__dirname, 'src/products/cliniflow.html'),
+                reCommander: resolve(__dirname, 'src/products/re-commander.html'),
+                referralHunter: resolve(__dirname, 'src/products/referral-hunter.html'),
             },
             output: {
                 manualChunks: {
