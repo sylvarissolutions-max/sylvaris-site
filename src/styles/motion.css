@@ -124,7 +124,7 @@ html.motion-ready .nav .nav-cta .btn {
     .cursor-glow { display: none; }
 }
 
-/* WebGL ambient canvas - intentionally visible, this IS the background */
+/* WebGL ambient canvas - supplementary to the CSS aurora blobs */
 .ambient-canvas {
     position: fixed;
     inset: 0;
@@ -132,7 +132,8 @@ html.motion-ready .nav .nav-cta .btn {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.5;
+    mix-blend-mode: screen;
 }
 
 /* Word-split containers */

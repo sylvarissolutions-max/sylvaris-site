@@ -2,36 +2,78 @@
  * Depends on tokens.css for all CSS variables.
  */
 
-/* Ambient grid backdrop */
+/* Film grain noise overlay - on top of EVERYTHING.
+ * This single element is what separates "dark template" from "designed."
+ * SVG feTurbulence generates fractal noise, overlaid at 3.5% opacity. */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(99, 102, 241, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
+    z-index: 9999;
     pointer-events: none;
-    z-index: var(--z-base);
-    mask-image: radial-gradient(ellipse at 50% 30%, black 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 0%, transparent 70%);
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Hero ambient glow */
-body::after {
-    content: "";
+/* Aurora blobs - 3 slowly drifting color masses creating atmospheric depth.
+ * Large, heavily blurred, low opacity, different hues. */
+.aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+.aurora-blob {
     position: absolute;
-    top: -10%;
+    border-radius: 50%;
+    will-change: transform;
+}
+.aurora-blob--1 {
+    width: 650px;
+    height: 650px;
+    top: -15%;
     right: -5%;
-    width: 900px;
-    height: 900px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(99, 102, 241, 0.06) 30%, rgba(99, 102, 241, 0) 65%);
-    pointer-events: none;
-    z-index: var(--z-base);
-    filter: blur(40px);
+    background: #6366f1;
+    filter: blur(140px);
+    opacity: 0.25;
+    animation: aurora-1 20s ease-in-out infinite alternate;
+}
+.aurora-blob--2 {
+    width: 550px;
+    height: 550px;
+    top: 25%;
+    left: -10%;
+    background: #22d3ee;
+    filter: blur(130px);
+    opacity: 0.12;
+    animation: aurora-2 25s ease-in-out infinite alternate;
+}
+.aurora-blob--3 {
+    width: 700px;
+    height: 700px;
+    bottom: -20%;
+    right: 15%;
+    background: #a855f7;
+    filter: blur(150px);
+    opacity: 0.15;
+    animation: aurora-3 18s ease-in-out infinite alternate;
+}
+@keyframes aurora-1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-60px, 40px) scale(1.15); }
+}
+@keyframes aurora-2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(80px, -30px) scale(1.1); }
+}
+@keyframes aurora-3 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-40px, -60px) scale(1.2); }
 }
 
-.nav, .hero, .section, .trust-strip, .final, .footer { position: relative; z-index: var(--z-content); }
+.nav, .hero, .section, .trust-strip, .final, .footer { position: relative; z-index: 1; }
 
 .mono { font-family: var(--font-mono); }
 
@@ -62,13 +104,19 @@ body::after {
 }
 
 h1, h2, h3, h4 {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text);
     line-height: 1.15;
 }
 
-h1 { font-size: var(--fs-h1); letter-spacing: var(--ls-tight); line-height: var(--lh-tight); }
+h1 {
+    font-size: var(--fs-h1);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
 h2 { font-size: var(--fs-h2); letter-spacing: var(--ls-snug); line-height: var(--lh-snug); }
 h3 { font-size: var(--fs-h3); letter-spacing: var(--ls-normal); }
 h4 { font-size: var(--fs-h4); font-weight: 500; }
@@ -183,11 +231,11 @@ a { color: var(--text); text-decoration: none; }
 
 /* Hero */
 .hero {
-    padding: 120px 0 96px;
+    padding: 160px 0 120px;
     border-bottom: 1px solid var(--border);
     position: relative;
     overflow: hidden;
-    min-height: 640px;
+    min-height: 720px;
 }
 .hero-inner {
     display: grid;
@@ -338,7 +386,7 @@ a { color: var(--text); text-decoration: none; }
     text-align: right;
 }
 .cockpit-row .metrics b { color: var(--text); font-weight: 500; }
-.cockpit-row .metrics .accent { color: var(--accent); font-weight: 500; }
+.cockpit-row .metrics .accent { color: var(--cyan); font-weight: 500; }
 .cockpit-foot {
     padding: 12px 18px;
     border-top: 1px solid var(--border);
@@ -519,7 +567,7 @@ a { color: var(--text); text-decoration: none; }
 }
 .mock-cell-label { color: var(--text-mute); font-size: 9px; text-transform: uppercase; letter-spacing: var(--ls-wider); margin-bottom: 4px; }
 .mock-cell-val { color: var(--text); font-size: 16px; font-weight: 500; }
-.mock-cell-val.accent { color: var(--accent); }
+.mock-cell-val.accent { color: var(--cyan); }
 .mock-rows { display: flex; flex-direction: column; gap: 6px; }
 .mock-row {
     display: flex;

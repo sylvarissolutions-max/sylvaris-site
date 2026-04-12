@@ -3,13 +3,13 @@
  */
 
 :root {
-    /* Surface palette */
+    /* Surface palette - wider contrast steps so cards POP off background */
     --bg: #060610;
-    --bg-elev: #0b0b18;
-    --surface: #0f0f1c;
-    --surface-2: #16162a;
-    --border: #22223a;
-    --border-strong: #30304a;
+    --bg-elev: #0c0c1c;
+    --surface: #13132b;
+    --surface-2: #1d1d3d;
+    --border: #2a2a4d;
+    --border-strong: #363660;
 
     /* Text palette */
     --text: #ececf4;
@@ -71,7 +71,7 @@
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     /* Type scale */
-    --fs-h1: clamp(40px, 4.6vw, 60px);
+    --fs-h1: clamp(48px, 5.5vw, 84px);
     --fs-h2: clamp(28px, 3.4vw, 42px);
     --fs-h3: 20px;
     --fs-h4: 15px;
