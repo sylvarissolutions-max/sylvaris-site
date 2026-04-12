@@ -8,17 +8,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 function animateCounter(el, target, duration) {
-    const obj = { val: 0 };
+    const obj = { val: 0, opacity: 0 };
     gsap.to(obj, {
         val: target,
+        opacity: 1,
         duration,
         ease: 'power2.out',
         onUpdate: () => {
             el.textContent = '$' + obj.val.toFixed(1) + 'M';
+            el.style.opacity = obj.opacity;
         },
         scrollTrigger: {
             trigger: el,
-            start: 'top 80%',
+            start: 'top 85%',
             toggleActions: 'play none none none',
         },
     });
