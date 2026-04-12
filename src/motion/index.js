@@ -1,43 +1,70 @@
-// Motion system orchestrator - single entry point imported by main.js.
-// Initializes all motion modules in the correct order on DOMContentLoaded.
+// Motion system orchestrator.
+// Critical fix: ScrollTrigger.refresh() runs AFTER hero animation completes
+// so below-fold trigger positions are calculated correctly.
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initNav } from './nav.js';
 import { initHero } from './hero.js';
 import { initReveal } from './reveal.js';
 import { initCursor } from './cursor.js';
-import { initCanvas } from './canvas.js';
+import { initCanvas, updateCanvasScroll } from './canvas.js';
 import { initScroll } from './scroll.js';
 import { initFaq } from './faq.js';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function boot() {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Always initialize FAQ (it's functional, not decorative)
     initFaq();
 
     if (reduced) {
-        // Reveal all animated elements immediately
         document.documentElement.classList.remove('motion-ready');
         return;
     }
 
-    // Canvas first - it's a background effect, independent of scroll
+    // Canvas (background)
     initCanvas();
 
-    // Scroll system next - Lenis must be running before ScrollTrigger fires
-    initScroll();
+    // Smooth scroll (Lenis wired to GSAP ticker)
+    const lenis = initScroll();
 
-    // Cursor effects
+    // Wire canvas to scroll position for reactive gradient
+    if (lenis) {
+        lenis.on('scroll', ({ scroll }) => {
+            updateCanvasScroll(scroll);
+        });
+    }
+
+    // Cursor glow
     initCursor();
 
     // Nav entrance
     initNav();
 
-    // Hero choreography (timeline, runs on load)
-    initHero();
+    // Hero choreography
+    const heroTimeline = initHero();
 
-    // Scroll-reveal bindings for everything else
-    initReveal();
+    // Scroll reveals MUST wait for hero to finish.
+    // Hero animation splits text and repositions elements, which invalidates
+    // ScrollTrigger's cached positions. Refresh after hero completes.
+    if (heroTimeline) {
+        heroTimeline.eventCallback('onComplete', () => {
+            ScrollTrigger.refresh(true);
+            initReveal();
+        });
+    } else {
+        gsap.delayedCall(1.8, () => {
+            ScrollTrigger.refresh(true);
+            initReveal();
+        });
+    }
+
+    // Safety: refresh again after window load (images, fonts, everything settled)
+    window.addEventListener('load', () => {
+        gsap.delayedCall(0.5, () => ScrollTrigger.refresh(true));
+    });
 }
 
 if (document.readyState === 'loading') {

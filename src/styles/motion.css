@@ -56,9 +56,14 @@ html.motion-ready .cockpit-row {
 }
 
 /* Section heads reveal on scroll */
+html.motion-ready .problem-panel {
+    opacity: 0;
+    transform: translateY(40px) rotateX(6deg);
+    transform-origin: 50% 100%;
+}
+
 html.motion-ready .section-head,
 html.motion-ready .problem-copy,
-html.motion-ready .problem-panel,
 html.motion-ready .final-copy,
 html.motion-ready .final-meta,
 html.motion-ready .faq-intro,
@@ -96,15 +101,15 @@ html.motion-ready .nav .nav-cta .btn {
     opacity: 0;
 }
 
-/* Cursor glow element */
+/* Cursor glow element - intentionally visible */
 .cursor-glow {
     position: fixed;
     top: 0;
     left: 0;
-    width: 520px;
-    height: 520px;
+    width: 700px;
+    height: 700px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.04) 35%, transparent 65%);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(99, 102, 241, 0.08) 30%, transparent 60%);
     pointer-events: none;
     z-index: var(--z-cursor);
     transform: translate(-50%, -50%);
@@ -119,7 +124,7 @@ html.motion-ready .nav .nav-cta .btn {
     .cursor-glow { display: none; }
 }
 
-/* WebGL ambient canvas */
+/* WebGL ambient canvas - intentionally visible, this IS the background */
 .ambient-canvas {
     position: fixed;
     inset: 0;
@@ -127,7 +132,7 @@ html.motion-ready .nav .nav-cta .btn {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 
 /* Word-split containers */

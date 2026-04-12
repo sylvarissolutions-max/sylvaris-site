@@ -1,7 +1,6 @@
-// Ambient WebGL gradient canvas using ogl.
-// Two slowly drifting radial gradients with smoothstep falloff.
-// Capped at ~30 fps on mobile, 60 fps on desktop. devicePixelRatio capped at 1.5.
-
+// Ambient WebGL gradient canvas - scroll-reactive, visible, cinematic.
+// Three drifting radial gradients with stronger intensity.
+// Responds to scroll position so the gradient shifts as user moves through the page.
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
 const VERT = `#version 300 es
@@ -18,42 +17,43 @@ precision highp float;
 
 uniform float uTime;
 uniform vec2 uResolution;
+uniform float uScroll;
 in vec2 vUv;
 out vec4 fragColor;
 
-float smoothBlob(vec2 uv, vec2 center, float radius, float softness) {
-    float d = length(uv - center);
-    return 1.0 - smoothstep(radius - softness, radius, d);
+float blob(vec2 uv, vec2 center, float r, float soft) {
+    return 1.0 - smoothstep(r - soft, r, length(uv - center));
 }
 
 void main() {
     vec2 uv = vUv;
-    uv.x *= uResolution.x / uResolution.y;
+    float aspect = uResolution.x / uResolution.y;
+    uv.x *= aspect;
 
-    float t = uTime * 0.05;
+    float t = uTime * 0.08;
+    float scroll = uScroll * 0.0003;
 
-    // Two slowly drifting blob centers
-    vec2 c1 = vec2(0.5 + sin(t * 0.6) * 0.2, 0.35 + cos(t * 0.4) * 0.15);
-    vec2 c2 = vec2(0.6 + cos(t * 0.5) * 0.25, 0.65 + sin(t * 0.7) * 0.2);
+    vec2 c1 = vec2((0.55 + sin(t * 0.7) * 0.25) * aspect, 0.3 + cos(t * 0.5) * 0.2 - scroll);
+    vec2 c2 = vec2((0.4 + cos(t * 0.6) * 0.3) * aspect, 0.7 + sin(t * 0.8) * 0.25 - scroll * 0.5);
+    vec2 c3 = vec2((0.7 + sin(t * 0.4) * 0.15) * aspect, 0.5 + cos(t * 0.9) * 0.15 - scroll * 0.3);
 
-    c1.x *= uResolution.x / uResolution.y;
-    c2.x *= uResolution.x / uResolution.y;
+    float b1 = blob(uv, c1, 0.45, 0.5);
+    float b2 = blob(uv, c2, 0.4, 0.45);
+    float b3 = blob(uv, c3, 0.3, 0.35);
 
-    float blob1 = smoothBlob(uv, c1, 0.35, 0.4);
-    float blob2 = smoothBlob(uv, c2, 0.3, 0.35);
-
-    // Accent purple blended with deep base
     vec3 base = vec3(0.024, 0.024, 0.063);
-    vec3 accent1 = vec3(0.388, 0.4, 0.945);
-    vec3 accent2 = vec3(0.137, 0.827, 0.933);
-
     vec3 color = base;
-    color = mix(color, accent1, blob1 * 0.18);
-    color = mix(color, accent2, blob2 * 0.08);
+    color = mix(color, vec3(0.39, 0.4, 0.945), b1 * 0.30);
+    color = mix(color, vec3(0.13, 0.83, 0.93), b2 * 0.16);
+    color = mix(color, vec3(0.55, 0.35, 0.95), b3 * 0.12);
 
     fragColor = vec4(color, 1.0);
 }
 `;
+
+let scrollY = 0;
+
+export function updateCanvasScroll(y) { scrollY = y; }
 
 export function initCanvas() {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
@@ -65,27 +65,25 @@ export function initCanvas() {
 
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const isMobile = matchMedia('(pointer: coarse)').matches;
-    const fpsCap = isMobile ? 30 : 60;
-    const frameInterval = 1000 / fpsCap;
+    const frameInterval = 1000 / (isMobile ? 30 : 60);
 
     let renderer, program, mesh;
     try {
         renderer = new Renderer({ canvas, dpr, alpha: false, antialias: false });
-        const gl = renderer.gl;
-        gl.clearColor(0.024, 0.024, 0.063, 1);
+        renderer.gl.clearColor(0.024, 0.024, 0.063, 1);
 
-        const geometry = new Triangle(gl);
-        program = new Program(gl, {
+        const geometry = new Triangle(renderer.gl);
+        program = new Program(renderer.gl, {
             vertex: VERT,
             fragment: FRAG,
             uniforms: {
                 uTime: { value: 0 },
                 uResolution: { value: [1, 1] },
+                uScroll: { value: 0 },
             },
         });
-        mesh = new Mesh(gl, { geometry, program });
+        mesh = new Mesh(renderer.gl, { geometry, program });
     } catch (err) {
-        // WebGL not available - fail silently, CSS ambient gradient will show through
         canvas.remove();
         return null;
     }
@@ -101,6 +99,7 @@ export function initCanvas() {
     const loop = (t) => {
         if (t - lastFrame >= frameInterval) {
             program.uniforms.uTime.value = t * 0.001;
+            program.uniforms.uScroll.value = scrollY;
             renderer.render({ scene: mesh });
             lastFrame = t;
         }
