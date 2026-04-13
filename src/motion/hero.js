@@ -3,9 +3,6 @@
 // Phase 2: scroll-hijacked pin - cockpit rotates in 3D, stats animate,
 //          background gradient shifts, hero text scales down and fades
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function splitHeadline(el) {
     const text = el.textContent.trim();
@@ -48,53 +45,8 @@ export function initHero() {
       .to(cockpit, { opacity: 1, y: 0, rotateX: 0, duration: 0.7, ease: 'power2.out' }, 'hero+=0.35')
       .to(cockpitRows, { opacity: 1, x: 0, duration: 0.4, stagger: 0.13, ease: 'power2.out' }, 'hero+=0.6');
 
-    // Phase 2: scroll-hijacked hero pin
-    // When user scrolls past the hero, the section pins and the cockpit
-    // rotates in 3D while the copy fades/scales down. Creates a cinematic
-    // transition effect between the hero and the problem section.
-    tl.eventCallback('onComplete', () => {
-        // Only create the pin AFTER entrance completes
-        ScrollTrigger.create({
-            trigger: hero,
-            start: 'top top',
-            end: '+=60%',
-            pin: true,
-            pinSpacing: true,
-            scrub: 0.8,
-            onUpdate: (self) => {
-                const p = self.progress;
-
-                // Hero copy fades and scales down as you scroll
-                gsap.set(heroCopy, {
-                    opacity: 1 - p * 0.7,
-                    scale: 1 - p * 0.08,
-                    y: -p * 40,
-                    filter: `blur(${p * 3}px)`,
-                });
-
-                // Cockpit rotates and lifts - creates a 3D reveal effect
-                gsap.set(cockpit, {
-                    rotateY: p * 6,
-                    rotateX: -p * 4,
-                    scale: 1 + p * 0.06,
-                    y: -p * 20,
-                    boxShadow: `0 ${40 + p * 40}px ${80 + p * 40}px -${32 - p * 10}px rgba(99, 102, 241, ${0.4 + p * 0.3})`,
-                });
-            },
-        });
-
-        // Parallax on the hero ambient glow
-        gsap.to('body::after', {
-            yPercent: -30,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: hero,
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true,
-            },
-        });
-    });
+    // No scroll-hijack pin - it created a 540px void between hero and
+    // the next section. The entrance animation is enough.
 
     return tl;
 }
