@@ -19,7 +19,7 @@ function animateCounter(el, target, duration) {
         },
         scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
+            start: 'top 95%',
             toggleActions: 'play none none none',
         },
     });
@@ -38,7 +38,7 @@ export function initReveal() {
         // Reveal the copy first
         gsap.to(problemCopy, {
             opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-            scrollTrigger: { trigger: problemSection, start: 'top 80%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: problemSection, start: 'top 95%', toggleActions: 'play none none none' },
         });
 
         // Problem panel slides in with 3D rotation
@@ -69,7 +69,7 @@ export function initReveal() {
             gsap.set(info, { x: fromRight ? 60 : -60, opacity: 0 });
             gsap.to(info, {
                 x: 0, opacity: 1, duration: 1.0, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 78%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
             });
         }
 
@@ -83,7 +83,7 @@ export function initReveal() {
             });
             gsap.to(mock, {
                 x: 0, opacity: 1, rotateY: 0, duration: 1.2, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 78%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
             });
 
             // Parallax: mock dashboard scrolls slower than content
@@ -106,7 +106,7 @@ export function initReveal() {
     document.querySelectorAll('.section-head').forEach(el => {
         gsap.to(el, {
             opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
         });
     });
 
@@ -117,13 +117,13 @@ export function initReveal() {
     if (compareWrap) {
         gsap.to(compareWrap, {
             opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-            scrollTrigger: { trigger: compareWrap, start: 'top 85%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: compareWrap, start: 'top 95%', toggleActions: 'play none none none' },
         });
         const rows = document.querySelectorAll('.compare tbody tr');
         if (rows.length) {
             gsap.to(rows, {
                 opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out',
-                scrollTrigger: { trigger: compareWrap, start: 'top 80%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: compareWrap, start: 'top 95%', toggleActions: 'play none none none' },
             });
         }
     }
@@ -139,7 +139,7 @@ export function initReveal() {
             gsap.to(card, {
                 opacity: 1, y: 0, rotateX: 0, scale: 1,
                 duration: 0.9, delay: i * 0.15, ease: 'power3.out',
-                scrollTrigger: { trigger: showcaseGrid, start: 'top 82%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: showcaseGrid, start: 'top 95%', toggleActions: 'play none none none' },
             });
         });
     }
@@ -155,7 +155,7 @@ export function initReveal() {
             gsap.to(step, {
                 opacity: 1, y: 0, scale: 1,
                 duration: 0.7, delay: i * 0.14, ease: 'power3.out',
-                scrollTrigger: { trigger: processGrid, start: 'top 82%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: processGrid, start: 'top 95%', toggleActions: 'play none none none' },
             });
         });
     }
@@ -178,7 +178,7 @@ export function initReveal() {
                 duration: isFeatured ? 1.0 : 0.8,
                 delay: i * 0.2,
                 ease: 'power3.out',
-                scrollTrigger: { trigger: pricingGrid, start: 'top 82%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: pricingGrid, start: 'top 95%', toggleActions: 'play none none none' },
             });
 
             // Featured tier gets extra glow animation on reveal
@@ -190,7 +190,7 @@ export function initReveal() {
                     duration: 1.2,
                     delay: 0.6,
                     ease: 'power2.out',
-                    scrollTrigger: { trigger: pricingGrid, start: 'top 82%', toggleActions: 'play none none none' },
+                    scrollTrigger: { trigger: pricingGrid, start: 'top 95%', toggleActions: 'play none none none' },
                 });
             }
         });
@@ -203,7 +203,7 @@ export function initReveal() {
         document.querySelectorAll(sel).forEach(el => {
             gsap.to(el, {
                 opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
             });
         });
     });
@@ -214,7 +214,7 @@ export function initReveal() {
         const items = riskGrid.querySelectorAll('.risk-item');
         gsap.to(items, {
             opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-            scrollTrigger: { trigger: riskGrid, start: 'top 85%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: riskGrid, start: 'top 95%', toggleActions: 'play none none none' },
         });
     }
 
@@ -227,7 +227,7 @@ export function initReveal() {
             gsap.to(item, {
                 opacity: 1, y: 0, scale: 1,
                 duration: 0.5, delay: i * 0.06, ease: 'power3.out',
-                scrollTrigger: { trigger: trustRow, start: 'top 85%', toggleActions: 'play none none none' },
+                scrollTrigger: { trigger: trustRow, start: 'top 95%', toggleActions: 'play none none none' },
             });
         });
     }
@@ -238,7 +238,7 @@ export function initReveal() {
         const items = faqContainer.querySelectorAll('.faq-item');
         gsap.to(items, {
             opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out',
-            scrollTrigger: { trigger: faqContainer, start: 'top 85%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: faqContainer, start: 'top 95%', toggleActions: 'play none none none' },
         });
     }
 
